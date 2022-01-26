@@ -34,7 +34,8 @@ export default function App() {
     responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
       RootNavigation.closeDrawer();
 
-      setNotificationData({ delivery: response?.notification?.request?.content?.data?.delivery });
+      const {setup, delivery} = response?.notification?.request?.content?.data;
+      setNotificationData({ delivery: delivery, setup: setup });
 
       RootNavigation.push('Joke Delivery');
     });

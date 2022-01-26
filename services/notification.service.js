@@ -10,9 +10,8 @@ Notifications.setNotificationHandler({
 });
 
 // Can use this function below, OR use Expo's Push Notification Tool-> https://expo.dev/notifications
-export async function sendPushNotification(expoPushToken) {
-  console.log('called', expoPushToken);
-  const data = await fetch('https://v2.jokeapi.dev/joke/Any?type=twopart')
+export async function sendPushNotification(expoPushToken, type = "Any") {
+  const data = await fetch(`https://v2.jokeapi.dev/joke/${type}?type=twopart`)
     .then(response => response.json())
     .then(data => {
       return data;
@@ -23,7 +22,7 @@ export async function sendPushNotification(expoPushToken) {
     sound: 'default',
     title: data.category + ' joke',
     body: data.setup,
-    data: { delivery: data.delivery },
+    data: { delivery: data.delivery, setup: data.setup },
   };
 
   await fetch('https://exp.host/--/api/v2/push/send', {

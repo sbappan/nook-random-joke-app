@@ -15,13 +15,15 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 16,
+    padding: 12,
+    margin: 4,
     color: nookBrandSecondaryColor,
     backgroundColor: nookBrandPrimaryColor,
   },
   buttonText: {
-    fontSize: 20,
+    fontSize: 14,
     fontWeight: 'bold',
+    textTransform: "uppercase",
   },
   jokeDelivery: { 
     fontSize: 32,
